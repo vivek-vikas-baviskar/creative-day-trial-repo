@@ -15,4 +15,7 @@ jobs:
     - name: Pull python docker image
       run: docker pull python
     - name: run python script from docker image
+      run: docker run --name test-container -v ${{ github.workspace }}:/work python:latest python /work/dem
+    - name: run python script from docker image
       run: docker run --name test-container -v ${{ github.workspace }}:/work python:latest python /work/demo.py
+      
