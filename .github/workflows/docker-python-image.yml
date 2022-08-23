@@ -18,5 +18,7 @@ jobs:
       run: docker run --name test-container -v ${{ github.workspace }}:/work python:latest python /work/dem
     - name: run python script from docker image
       if: always() 
-      run: docker run --name test-container -v ${{ github.workspace }}:/work python:latest python /work/demo.py
+      run: | 
+         docker container rm test-container
+         docker run --name test-container -v ${{ github.workspace }}:/work python:latest python /work/demo.py
       
